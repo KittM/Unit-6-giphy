@@ -12,3 +12,14 @@ $(document).ready(function () {
      var newButton = "";
    
 });
+
+// setting up function to empty gifbuttons div and create buttons based on topics array.  Then calling it.
+function fillButtons() {
+     $("#gifbuttons").empty();
+   for (i=0; i < topics.length; i++){
+     $("#gifbuttons").append(`<button class="btn btn-light btn-sm ml-1 gifbutton" type="button" data-character="${topics[i]}">${topics[i]}</button>`);
+     
+   };
+   
+};
+ 
