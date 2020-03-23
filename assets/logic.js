@@ -11,7 +11,7 @@ $(document).ready(function () {
      // empty variable for button added by user
      var newButton = "";
    
-});
+
 
 // setting up function to empty gifbuttons div and create buttons based on topics array.  Then calling it.
 function fillButtons() {
@@ -23,3 +23,30 @@ function fillButtons() {
    
 };
  
+fillButtons();
+
+// listen to form, add button
+$("#submitbutton").on("click", function(event) {
+  event.preventDefault();
+  
+  // put value from form in variable and log it
+  newButton = $("#addbutton").val().trim();
+     console.log(newButton);
+     
+          // push that variable into topics array and log it
+          topics.push(newButton);
+          console.log(topics);
+          fillButtons();
+          console.log(document.body);
+               // function for button clicks, had to duplicate here for it to work after new buttons added.  Dont' know why.  Maybe a scoping issue.  Not very DRY. Will try to fix later.  Far indented whole thing so it's easier to pull out.
+               $(".gifbutton").click(function(){
+               var character = $(this).attr("data-character");
+               queryURL = beginningURL+character+giphyApi;
+               $.ajax({
+               url: queryURL,
+               method: "GET"
+               }).then(function(response) {
+               console.log(response);
+               console.log(response.data);
+
+});
