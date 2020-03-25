@@ -48,5 +48,19 @@ $("#submitbutton").on("click", function(event) {
                }).then(function(response) {
                console.log(response);
                console.log(response.data);
+                    
+
+                    for (i=0; i< response.data.length; i++){
+                         console.log(response.data[i].images.fixed_width_still.url);
+                         var characterImage = $("<img>").attr("class", "rounded border border-dark m-1 gif").attr("data-state", "still");
+                         var rating = response.data[i].rating;
+                         var gifDiv = $("<div>").attr("class", "d-inline");
+                         console.log(rating);
+                         var p = $("<p>").text("Rating: "+rating).attr("class", "d-inline");
+                         characterImage.attr("src", response.data[i].images.fixed_width_still.url).attr("data-still", response.data[i].images.fixed_width_still.url).attr("data-animate", response.data[i].images.fixed_width.url);
+                         gifDiv.append(characterImage);
+                         gifDiv.append(p);
+                         $("#gifs").prepend(gifDiv);
+                       
 
 });
